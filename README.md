@@ -5,7 +5,7 @@
 A simple and user-friendly task management tool to help you stay organized and on track.
 
 ## Requirements
-- fastapi
+- Fastapi
 - python 3.10
 
 ## Installation
