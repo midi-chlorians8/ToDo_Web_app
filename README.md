@@ -1,10 +1,25 @@
-# ToDo_Web_app
-Based on Fast Apt web app to do list 
 
-<p align=”center”>
+# ToDo List Project
+A simple and user-friendly task management tool to help you stay organized and on track.
 
-<img width=”200" height=”200" src=”https://user-images.githubusercontent.com/75753187/123358567-aac7b900-d539-11eb-8275-0b380264bb4c.png" alt=”my banner”>
+## Requirements
+- fastapi
+- python 3.10
 
-</p>
+## Installation
+To install the dependencies, run the following command:
 
+## Usage
+To run the application, execute the following command in your terminal:
 
+## Features
+- Add new tasks
+- Mark tasks as completed
+- View a list of all tasks, including completed tasks
+- Remove completed tasks from the list
+
+## Contributing
+Contributions are always welcome! If you have an idea for a new feature or have found a bug, please open an issue.
+
+## License
+This project is licensed under the MIT License.
