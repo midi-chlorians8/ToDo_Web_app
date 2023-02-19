@@ -1,0 +1,44 @@
+<html>
+<head>
+    <title>Item Details</title>
+    <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
+</head>
+<body>
+
+    <table border="1">
+
+    {% for note in id %}
+    <tr> <th>{{ note.name }}</th><td> {{ note.description }} </td></tr>
+    {% endfor %}
+    <label for="inputField">Enter your note:</label>
+    <input type="text" id="inputField">
+    <button onclick="sendCommand()">Create</button>
+
+    <script>
+        function sendCommand() {
+          const command = document.getElementById('inputField').value;
+          // Replace API_URL with the URL of your API
+          fetch('http://0.0.0.0:8001/process_command/', {
+            method: 'POST',
+            body: JSON.stringify({ command }),
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+            .then(response => {
+              if (response.ok) {
+                alert('Command sent successfully');
+              } else {
+                throw new Error('Network response was not ok');
+              }
+            })
+            .catch(error => {
+              alert('There was a problem sending the command: ' + error.message);
+            });
+        }
+      </script>
+
+      
+</table>
+</body>
+</html>
