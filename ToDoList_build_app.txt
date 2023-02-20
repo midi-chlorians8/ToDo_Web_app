@@ -1,12 +1,9 @@
-1) send post request with json
+1) Убрать падиние сервера при падении одинаковой ошибки
+https://fastapi.tiangolo.com/ru/tutorial/body/ 
 
-curl -X 'POST' \ curl -X 'POST' \
-  'http://127.0.0.1:8000/items/' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '{
-  "name": "string",
-  "price": 0
-}'
+2) Задеплоиться на сервер в своём акке
 
-Разобраться как постманом отправлять так же
+3) Добавить nginx
+https://www.slingacademy.com/article/deploying-fastapi-on-ubuntu-with-nginx-and-lets-encrypt/
+
+4) Настроить CI/CD по аналогии проекта что я делал на Jango
