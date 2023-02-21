@@ -58,6 +58,7 @@ touch i_am_here
 echo Succes installed Docker and Docker Compose
 
 sudo docker-compose up -d
+bash check_git_1.sh > output.txt
 # download and install wordpress end enviedronment
 
 
