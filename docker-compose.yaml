@@ -1,5 +1,20 @@
-version: "3.0"
+# version: '3.8'
+version: '3.4'
 services:
+  web:
+    build: ./app
+    command: bash -c 'sleep 5;  uvicorn app.main:app --host 0.0.0.0' #bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; uvicorn main:app --host 0.0.0.0'
+    volumes:
+      - .:/app
+    ports:
+      - 8008:8000
+    # environment:
+    #   - DATABASE_URL=postgresql://postgres:postgres@localhost/postgres
+    depends_on:
+      - db
+    #restart: always
+    networks:
+      - custom
   db:
     container_name: "db"
     image: postgres:14.1-alpine
@@ -10,6 +25,8 @@ services:
       - POSTGRES_DB=postgres
     ports:
       - "5432:5432"
+    # expose:
+    #   - 5432
     networks:
       - custom
 

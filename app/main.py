@@ -50,6 +50,7 @@ db = SessionLocal()
 #Cервер
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
+from sqlalchemy import text
 import uvicorn
 
 app = FastAPI()
@@ -72,6 +73,29 @@ def create_item(item: Note_Pydant): # Вот так вот ловим body http 
     notedict = item.dict()
     db_note = Note(name = notedict.get("name"), description = notedict.get("description"))
 
+    # Узнать сколько у нас записей в таблице
+    count = 0
+    with engine.connect() as connection:
+        result = connection.execute(text("select count(id) from notes"))
+        for row in result:
+            count = row.count +1 #  Чтоб заработало и найти совпадающее имя при запросе на добавление записи в бд.
+            #print(row.count)
+            print(f"row count: {count}")
+            #pass
+    # Узнать сколько у нас записей в таблице buy ring go to shop2
+
+    #Сравниваем db_note которую хотим добавить в код и получаем список записей из базы данных.
+    for i in range(1,count):
+        print(i)
+        print(f"Received command: {i}")
+        res = db.get(Note, i)
+        print(res.name)
+        print(db_note.name)
+        if res.name == db_note.name:
+            print("ERROR")
+            raise HTTPException(status_code=404, detail="I can not add row with the same name")
+    #Сравниваем db_note которую хотим добавить в код и получаем список записей из базы данных.
+    
     db.add(db_note)
     db.commit()
     return item
@@ -103,9 +127,9 @@ from fastapi import FastAPI, Request
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
-@app.get("/notes/{id}", response_class=HTMLResponse)
-async def read_item(request: Request, id: str):
-    read_notes = db.query(Note).offset(1).limit(10).all()
+@app.get("/notes_html/{user_id}", response_class=HTMLResponse) # user_id для будущего апгрейда для мультиюзеров
+async def read_item(request: Request, user_id: str, skip: int = 0, limit: int = 10):
+    read_notes = db.query(Note).offset(skip).limit(limit).all()
     return templates.TemplateResponse("item.html", {"request": request, "id": read_notes})
 
 class Command(BaseModel):
@@ -119,7 +143,7 @@ async def process_command(command: Command):
 # Вывод страницы с заметками 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8001)  # run app on the host and port
+    uvicorn.run(app, host="0.0.0.0", port=8000)  # run app on the host and port
    
 
 
