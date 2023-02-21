@@ -1,0 +1,3 @@
+I need terraform code. I need create spot ec2 instance in aws cloud in frankfurt region. t3.medium. Instance with ubuntu 22.04. With KeyFromLinuxAWS-Frankfurt. I need open all output ports and open 22 , 80 , 433 , 8000, 8008 ports. Describe aws provider version and terraform version
+
+Which terraform version did you use?
