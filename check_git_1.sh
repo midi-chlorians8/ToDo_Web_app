@@ -1,5 +1,3 @@
-
-
 #!/usr/bin/env bash
 
 # checks if branch has something pending
