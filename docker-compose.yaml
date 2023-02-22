@@ -7,7 +7,7 @@ services:
     volumes:
       - .:/app
     ports:
-      - 8008:8000
+      - 80:8000 #внеш / внутр
     # environment:
     #   - DATABASE_URL=postgresql://postgres:postgres@localhost/postgres
     depends_on:
