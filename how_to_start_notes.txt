@@ -14,3 +14,9 @@ links: https://fastapi.tiangolo.com/tutorial/first-steps/
 old:
 uvicorn main:app --reload
 
+to local test change to localhost
+ fetch("http://api-todo.kolotech.space/tasks", { 
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
