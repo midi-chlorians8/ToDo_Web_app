@@ -1,4 +1,3 @@
-# version: '3.8'
 version: '3.4'
 services:
   web:
@@ -12,7 +11,7 @@ services:
     #   - DATABASE_URL=postgresql://postgres:postgres@localhost/postgres
     depends_on:
       - db
-    #restart: always
+    restart: always
     networks:
       - custom
   db:
