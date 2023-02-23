@@ -141,6 +141,7 @@
         <tbody>
             {% for note in id %}
             <tr>
+              <td>{{ note.id }}</td>
                 <td>{{ note.name }}</td>
                 <td>{{ note.description }}</td>
                 <td><button style="background-color: rgb(212, 0, 0); color: white;">Delete</button></td>
