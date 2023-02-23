@@ -116,6 +116,23 @@
           })
           .catch(error => alert("Error creating task: " + error));
       }
+      function deleteTask(noteId) {
+        fetch(`http://api-todo.kolotech.space/del_note/${noteId}`, {
+          method: "DELETE",
+        })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error("Failed to delete task");
+            }
+            return response.json();
+          })
+          .then(data => {
+            alert("Task deleted successfully!");
+            location.reload(); // Reload the page
+          })
+          .catch(error => alert("Error deleting task: " + error));
+      }
+
     </script>
   </head>
   <body>
@@ -145,7 +162,7 @@
               <td>{{ note.id }}</td>
                 <td>{{ note.name }}</td>
                 <td>{{ note.description }}</td>
-                <td><button style="background-color: rgb(212, 0, 0); color: white;">Delete</button></td>
+                <td><button style="background-color: rgb(212, 0, 0); color: white;" onclick="deleteTask({{ note.id }})">Delete</button></td>
             </tr>
             {% endfor %}
         </tbody>

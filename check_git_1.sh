@@ -37,8 +37,7 @@ do
         echo GIT_BRANCH: $GIT_BRANCH
         echo NEW_GIT_BRANCH: $GIT_BRANCH
 
-        sudo docker-compose down
-        sudo docker-compose up -d
+        sudo docker-compose up -d --no-deps --build web
         fi
 
         
