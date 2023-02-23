@@ -3,7 +3,7 @@ version: '3.4'
 services:
   web:
     build: ./app
-    command: bash -c 'sleep 5;  uvicorn app.main:app --host 0.0.0.0' #bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; uvicorn main:app --host 0.0.0.0'
+    command: bash -c 'sleep 2;  uvicorn app.main:app --host 0.0.0.0' #bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; uvicorn main:app --host 0.0.0.0'
     volumes:
       - .:/app
     ports:

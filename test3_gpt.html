@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Task Creator</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #f2f2f2;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      h1 {
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 30px;
+      }
+
+      form {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 30px;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 2px solid #ccc;
+        font-size: 16px;
+        margin-bottom: 20px;
+        transition: border-color 0.3s ease-in-out;
+      }
+
+      input[type="text"]:focus {
+        outline: none;
+        border-color: #4CAF50;
+      }
+
+      button {
+        display: block;
+        margin: 0 auto;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+      }
+
+      button:hover {
+        background-color: #3e8e41;
+      }
+    </style>
+    <script>
+      function createTask() {
+        const taskNameInput = document.getElementById("task-name");
+        const taskDescriptionInput = document.getElementById("task-description");
+
+        const taskName = taskNameInput.value.trim();
+        const taskDescription = taskDescriptionInput.value.trim();
+
+        if (!taskName || !taskDescription) {
+          alert("Please enter both task name and description.");
+          return;
+        }
+
+        fetch("http://localhost:8000/tasks", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ name: taskName, description: taskDescription })
+        })
+          .then(response => response.json())
+          .then(data => {
+            alert("Task created successfully!");
+            taskNameInput.value = "";
+            taskDescriptionInput.value = "";
+          })
+          .catch(error => alert("Error creating task: " + error));
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Create a New Task</h1>
+    <form onsubmit="event.preventDefault(); createTask();">
+      <label for="task-name">Task Name:</label>
+      <input type="text" id="task-name" name="task-name" placeholder="Enter task name">
+
+      <label for="task-description">Task Description:</label>
+      <input type="text" id="task-description" name="task-description" placeholder="Enter task description">
+
+      <button type="submit">Create</button>
+    </form>
+  </body>
+</html>
