@@ -100,7 +100,7 @@
           return;
         }
 
-        fetch("http://api-todo.kolotech.space/tasks", {
+        fetch("http://api-todo.kolotech.space/tasks", { 
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -112,6 +112,7 @@
             alert("Task created successfully!");
             taskNameInput.value = "";
             taskDescriptionInput.value = "";
+            location.reload(); // Reload the page
           })
           .catch(error => alert("Error creating task: " + error));
       }
