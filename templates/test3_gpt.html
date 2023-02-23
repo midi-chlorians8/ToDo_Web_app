@@ -131,21 +131,21 @@
     </form>
     
     <h2>Task List:</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for note in id %}
-            <tr>
-                <td>{{ note.name }}</td>
-                <td>{{ note.description }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
+    <table style="border-collapse: collapse; table-layout: fixed;">
+      <thead>
+        <tr>
+          <th style="border: 1px solid black; padding: 10px;">Name</th>
+          <th style="border: 1px solid black; padding: 10px;">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for note in id %}
+        <tr>
+          <td style="border: 1px solid black; padding: 10px;">{{ note.name }}</td>
+          <td style="border: 1px solid black; padding: 10px;">{{ note.description }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
     </table>
-  </body>
+    
 </html>
