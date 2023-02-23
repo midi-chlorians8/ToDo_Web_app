@@ -1,3 +1,9 @@
-I need terraform code. I need create spot ec2 instance in aws cloud in frankfurt region. t3.medium. Instance with ubuntu 22.04. With KeyFromLinuxAWS-Frankfurt. I need open all output ports and open 22 , 80 , 433 , 8000, 8008 ports. Describe aws provider version and terraform version
+I need html page with 2 field and one button.  First field will be task name. Second field will be task description. Button text will be "Create"
 
-Which terraform version did you use?
+make that in matrix style
+
+I need more good user interface
+
+
+
+I need add modification to that code. I use fastapi. When I click on "create" button - I need to sent post message to fast api backend. In body will be note information from field "task name" and from field "task description"
