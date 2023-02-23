@@ -6,4 +6,20 @@ I need more good user interface
 
 
 
-I need add modification to that code. I use fastapi. When I click on "create" button - I need to sent post message to fast api backend. In body will be note information from field "task name" and from field "task description"
+I need add modification to that code. I use fastapi. When I click on "create" button - I need to sent post message to fast api backend. In body will be note information from field "task name" and from field "task description". When we click button and sent request we need to update page.
+
+
+===========================
+
+I need html page with 2 field and one button.  First field will be task name. Second field will be task description. Button text will be "Create". 
+And I have work jinja2 template:
+            {% for note in id %}
+            <tr>
+                <td>{{ note.name }}</td>
+                <td>{{ note.description }}</td>
+            </tr>
+            {% endfor %}
+I need add modification to that code. I use fastapi. When I click on "create" button - I need to sent post message to fast api backend. In body will be note information from field "task name" and from field "task description". When we click button and sent request we need to update page.
+
+Make all page in matrix style
+Send me html and css files

@@ -1,27 +1,45 @@
-![OvMZBs9](https://user-images.githubusercontent.com/50805334/217683358-20cb1979-05ac-4a5c-a37d-2de612970edb.jpg)
+# Todo List Web Application
 
-
-# ToDo List Project
-A simple and user-friendly task management tool to help you stay organized and on track.
-
-## Requirements
-- Read requirements.txt
-- python 3.10
-
-## Installation
-To install the dependencies, run the following command:
-
-## Usage
-To run the application, execute the following command in your terminal:
+Todo List is a web application based on Flask that allows you to add new notes and see your previous notes. The project utilizes Infrastructure as Code (IaC) using Terraform to deploy the infrastructure on AWS Cloud. The Terraform code installs Docker on the instance and clones the code from a GitHub repository. Then, the command `docker-compose up -d` is executed to start the application.
 
 ## Features
-- Add new tasks
-- Mark tasks as completed
-- View a list of all tasks, including completed tasks
-- Remove completed tasks from the list
 
-## Contributing
-Contributions are always welcome! If you have an idea for a new feature or have found a bug, please open an issue.
+- Add new notes
+- View previous notes
+- Easy to use interface
+- Deployed on AWS Cloud using Terraform
+
+## Getting Started
+
+To get started with Todo List, follow the instructions below.
+
+### Prerequisites
+
+- Terraform
+- AWS account
+
+### Installation
+
+1. Clone the GitHub repository
+2. Run `terraform init` to initialize Terraform
+3. Run `terraform plan` to preview the resources that will be created
+4. Run `terraform apply` to create the resources on AWS
+5. Wait for Terraform to finish provisioning the resources
+6. Open the application URL in your browser
+
+## Technologies Used
+
+- Flask
+- Terraform
+- Docker
+- AWS
+
+## Contributors
+
+- John Doe
+- Jane Smith
+- Alex Johnson
 
 ## License
-This project is licensed under the MIT License.
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
