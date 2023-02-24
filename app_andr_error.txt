@@ -1,0 +1,53 @@
+web_1  | INFO:     46.53.246.48:10878 - "POST /send_note/ HTTP/1.1" 500 Internal Server Error
+web_1  | ERROR:    Exception in ASGI application
+web_1  | Traceback (most recent call last):
+web_1  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/httptools_impl.py", line 419, in run_asgi
+web_1  |     result = await app(  # type: ignore[func-returns-value]
+web_1  |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+web_1  |   File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 78, in __call__
+web_1  |     return await self.app(scope, receive, send)
+web_1  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+web_1  |   File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 271, in __call__
+web_1  |     await super().__call__(scope, receive, send)
+web_1  |   File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 118, in __call__
+web_1  |     await self.middleware_stack(scope, receive, send)
+web_1  |   File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 184, in __call__
+web_1  |     raise exc
+web_1  |   File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 162, in __call__
+web_1  |     await self.app(scope, receive, _send)
+web_1  |   File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 79, in __call__
+web_1  |     raise exc
+web_1  |   File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 68, in __call__
+web_1  |     await self.app(scope, receive, sender)
+web_1  |   File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 21, in __call__
+web_1  |     raise e
+web_1  |   File "/usr/local/lib/python3.11/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+web_1  |     await self.app(scope, receive, send)
+web_1  |   File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 706, in __call__
+web_1  |     await route.handle(scope, receive, send)
+web_1  |   File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 276, in handle
+web_1  |     await self.app(scope, receive, send)
+web_1  |   File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 66, in app
+web_1  |     response = await func(request)
+web_1  |                ^^^^^^^^^^^^^^^^^^^
+web_1  |   File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 237, in app
+web_1  |     raw_response = await run_endpoint_function(
+web_1  |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+web_1  |   File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 165, in run_endpoint_function
+web_1  |     return await run_in_threadpool(dependant.call, **values)
+web_1  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+web_1  |   File "/usr/local/lib/python3.11/site-packages/starlette/concurrency.py", line 41, in run_in_threadpool
+web_1  |     return await anyio.to_thread.run_sync(func, *args)
+web_1  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+web_1  |   File "/usr/local/lib/python3.11/site-packages/anyio/to_thread.py", line 31, in run_sync
+web_1  |     return await get_asynclib().run_sync_in_worker_thread(
+web_1  |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+web_1  |   File "/usr/local/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 937, in run_sync_in_worker_thread
+web_1  |     return await future
+web_1  |            ^^^^^^^^^^^^
+web_1  |   File "/usr/local/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 867, in run
+web_1  |     result = context.run(func, *args)
+web_1  |              ^^^^^^^^^^^^^^^^^^^^^^^^
+web_1  |   File "/app/app/main.py", line 92, in create_item
+web_1  |     print(res.name)
+web_1  |           ^^^^^^^^
