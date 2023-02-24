@@ -156,9 +156,10 @@ class Task(BaseModel):
 @app.get("/notes2_html/{user_id}", response_class=HTMLResponse) # user_id для будущего апгрейда для мультиюзеров
 async def read_item(request: Request, user_id: str, skip: int = 0, limit: int = 10):
     read_notes = db.query(Note).offset(skip).limit(limit).all()
-    return templates.TemplateResponse("test3_gpt.html", {"request": request, "id": read_notes})
+    return templates.TemplateResponse("test4_gpt.html", {"request": request, "id": read_notes})
 
 
+from sqlalchemy import exists
 @app.post("/tasks") # Принять от кнопки создать body
 def create_task(task: Task):
     task_dict = task.dict()
@@ -166,28 +167,31 @@ def create_task(task: Task):
     notedict = task_dict
     db_note = Note(name = notedict.get("name"), description = notedict.get("description"))
 
-    # Узнать сколько у нас записей в таблице
-    count = 0
-    with engine.connect() as connection:
-        result = connection.execute(text("select count(id) from notes"))
-        for row in result:
-            count = row.count +1 #  Чтоб заработало и найти совпадающее имя при запросе на добавление записи в бд.
-            #print(row.count)
-            print(f"row count: {count}")
-            #pass
-    # Узнать сколько у нас записей в таблице buy ring go to shop2
+    note_exists = db.query(exists().where(Note.name == db_note.name)).scalar() #использовать запрос, чтобы проверить, существует ли заметка с таким же именем
+    if note_exists:
+        raise HTTPException(status_code=404, detail="Cannot add row with the same name")
+    # # Узнать сколько у нас записей в таблице
+    # count = 0
+    # with engine.connect() as connection:
+    #     result = connection.execute(text("select count(id) from notes"))
+    #     for row in result:
+    #         count = row.count +1 #  Чтоб заработало и найти совпадающее имя при запросе на добавление записи в бд.
+    #         #print(row.count)
+    #         print(f"row count: {count}")
+    #         #pass
+    # # Узнать сколько у нас записей в таблице buy ring go to shop2
 
-    #Сравниваем db_note которую хотим добавить в код и получаем список записей из базы данных.
-    for i in range(1,count):
-        print(i)
-        print(f"Received command: {i}")
-        res = db.get(Note, i)
-        print(res.name)
-        print(db_note.name)
-        if res.name == db_note.name:
-            print("ERROR")
-            raise HTTPException(status_code=404, detail="I can not add row with the same name")
-    #Сравниваем db_note которую хотим добавить в код и получаем список записей из базы данных.
+    # #Сравниваем db_note которую хотим добавить в код и получаем список записей из базы данных.
+    # for i in range(1,count):
+    #     #print(i)
+    #     print(f"Received command: {i}")
+    #     res = db.get(Note, i)
+    #     print(res.name)
+    #     print(db_note.name)
+    #     if res.name == db_note.name:
+    #         print("ERROR")
+    #         raise HTTPException(status_code=404, detail="I can not add row with the same name")
+    # #Сравниваем db_note которую хотим добавить в код и получаем список записей из базы данных.
     
     db.add(db_note)
     db.commit()
