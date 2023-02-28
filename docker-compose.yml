@@ -45,11 +45,13 @@ services:
       - certbot-var:/var/lib/letsencrypt
     depends_on:
       - nginx
+    networks:
+      - custom      
 
 volumes:
   certbot-etc:
   certbot-var:
-  
+
 networks:
   custom:
     driver: bridge
