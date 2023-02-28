@@ -39,7 +39,7 @@ services:
 
   certbot:
     image: certbot/certbot
-    command: certonly --webroot --webroot-path=/var/www/html --email your-email@example.com --agree-tos --no-eff-email --staging -d api-todo.kolotech.space
+    command: certonly --webroot --webroot-path=/var/www/html --email dobryjsok60@gmail.com --agree-tos --no-eff-email -d api-todo.kolotech.space
     volumes:
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
@@ -55,3 +55,7 @@ volumes:
 networks:
   custom:
     driver: bridge
+
+
+
+
