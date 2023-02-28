@@ -20,3 +20,7 @@ to local test change to localhost
           headers: {
             "Content-Type": "application/json"
           },
+
+
+
+sudo certbot certonly --webroot -w /path/to/your/app -d api-todo.kolotech.space -d api-todo.kolotech.space
