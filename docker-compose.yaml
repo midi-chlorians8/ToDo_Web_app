@@ -43,4 +43,3 @@ services:
       - "5432:5432"
 
     
-    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
