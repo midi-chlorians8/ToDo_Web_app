@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bash 
 
 # checks if branch has something pending
 function parse_git_dirty() {

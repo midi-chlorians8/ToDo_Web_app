@@ -54,7 +54,7 @@ git clone https://github.com/midi-chlorians8/ToDo_Web_app.git
 cd ToDo_Web_app/
 touch i_am_here
 
-#newgrp docker #Для того чтоб сразу приминился носудо докер
+#newgrp docker #Для того чтоб сразу приминился носудо докер 
 echo Succes installed Docker and Docker Compose
 
 
