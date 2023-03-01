@@ -169,3 +169,5 @@ terraform.rc
 
 
 .terraform.lock.hcl
+
+Terraform_user_accessKeys.csv

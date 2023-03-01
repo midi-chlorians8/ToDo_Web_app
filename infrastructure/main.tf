@@ -1,8 +1,16 @@
-provider "aws" {
-  region = var.region
-  #version = "3.27.0"
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "4.56.0"
+
+    }
+  }
 }
 
+provider "aws" {
+  region = var.region
+}
 
 
 data "aws_ami" "ubuntu" {
@@ -25,16 +33,41 @@ resource "aws_security_group" "example" {
   name        = "todo_terraform_sg"
   description = "Allow SSH and HTTP/HTTPS traffic"
 
-  dynamic "ingress" {
-    for_each = var.allow_ports
-    content {
-      from_port   = ingress.value
-      to_port     = ingress.value
-      protocol    = "tcp"
-      cidr_blocks = ["0.0.0.0/0"]
-    }
+  # dynamic "ingress" {
+  #   for_each = var.allow_ports
+  #   content {
+  #     from_port   = ingress.value
+  #     to_port     = ingress.value
+  #     protocol    = "0"
+  #     cidr_blocks = ["0.0.0.0/0"]
+  #   }
+  # }
+ ingress {
+    from_port = 80
+    to_port = 80
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+    from_port = 443
+    to_port = 443
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+    from_port = 22
+    to_port = 22
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+    from_port = 8000
+    to_port = 8000
+    protocol = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
+  
   egress {
     from_port   = 0
     to_port     = 0

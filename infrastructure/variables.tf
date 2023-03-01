@@ -13,7 +13,7 @@ variable "instance_type" {
 variable "allow_ports" {
   description = "List of Ports to open for server"
   type        = list
-  default     = ["80", "443", "22", "8080"]
+  #default     = ["80", "443", "22"]
 }
 
 variable "busket_name" {

@@ -57,12 +57,15 @@ touch i_am_here
 #newgrp docker #Для того чтоб сразу приминился носудо докер
 echo Succes installed Docker and Docker Compose
 
-sudo docker-compose up -d
+
+sudo su
+chmod +x /home/ubuntu/check_git_1.sh
+#sudo docker-compose up -d
 bash check_git_1.sh > output.txt
 # download and install wordpress end enviedronment
+#bash init-letsencrypt.sh > result_init_letsencrypt.txt
 
-
-#chmod +x /home/ubuntu/init-letsencrypt.sh
+chmod +x /home/ubuntu/init-letsencrypt.sh
 #touch file3
 
 
