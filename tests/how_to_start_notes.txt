@@ -15,7 +15,16 @@ sudo su
 chmod +x init-letsencrypt.sh
 ./init-letsencrypt.sh
 
-
+When I commented proxy pass - init-letsencrypt done successfully 
+    # location / {
+    #     root   /usr/share/nginx/html;
+    #     index  index.html;
+    # }
+    location / {
+        proxy_pass http://web;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }    
 
 
 
