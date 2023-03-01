@@ -67,7 +67,7 @@ resource "aws_security_group" "example" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
-  
+
   egress {
     from_port   = 0
     to_port     = 0
@@ -97,9 +97,10 @@ resource "aws_eip" "example" {
 }
 
 output "public_ip" {
-  description = "Contains the public IP address"
+  description = "Contains the public(elastic) IP address"
   value       = aws_eip.example.public_ip
 }
+
 
 resource "aws_eip_association" "eip_assoc" {
   instance_id = aws_instance.my_serv90.id
