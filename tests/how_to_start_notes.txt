@@ -1,7 +1,7 @@
 From folder infrastructure press
 
-terraform apply --auto-approve
-terraform destroy --auto-approve
+terraform apply --auto-approve    To create instance in AWS cloud
+terraform destroy --auto-approve  To create destroy in AWS cloud
 
 Then we can se public_ip in terminal.
 I click to my dns control panel https://dcc.godaddy.com/control/kolotech.space/dns
@@ -10,6 +10,7 @@ and create record A type with name for example 8march.kolotech.space. with my pu
 
 Then I go to my created instance
 Type
+cd ToDo_Web_app/
 sudo su
 chmod +x init-letsencrypt.sh
 ./init-letsencrypt.sh
