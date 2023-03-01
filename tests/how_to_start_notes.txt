@@ -1,4 +1,36 @@
-tested on ubuntu 22
+From folder infrastructure press
+
+terraform apply --auto-approve
+terraform destroy --auto-approve
+
+Then we can se public_ip in terminal.
+I click to my dns control panel https://dcc.godaddy.com/control/kolotech.space/dns
+and create record A type with name for example 8march.kolotech.space. with my public_ip = "18.195.124.136"
+
+
+Then I go to my created instance
+Type
+sudo su
+chmod +x init-letsencrypt.sh
+./init-letsencrypt.sh
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+=== old ===
+
+
+teste1d on ubuntu 22
 
 Commands to start manually:
 docker-compose up -d
