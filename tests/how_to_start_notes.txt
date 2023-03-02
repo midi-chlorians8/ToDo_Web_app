@@ -15,21 +15,47 @@ sudo su
 chmod +x init-letsencrypt.sh
 ./init-letsencrypt.sh
 
+march.kolotech.space
+
+
 When I commented proxy pass - init-letsencrypt done successfully 
-    # location / {
-    #     root   /usr/share/nginx/html;
-    #     index  index.html;
-    # }
+
+WIth that config i can receive certs:
+
+server {
+    listen 80;
+    server_name marchtb.kolotech.space;
+    server_tokens off;
+
+    location /.well-known/acme-challenge/ {
+        root /var/www/certbot;
+    }
+
     location / {
-        proxy_pass http://web;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-    }    
+        return 301 https://$host$request_uri;
+    }
+}
+
+server {
+    listen 443 ssl;
+    server_name marchtb.kolotech.space;
+    server_tokens off;
+
+    ssl_certificate /etc/letsencrypt/live/marchtb.kolotech.space/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/marchtb.kolotech.space/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+    location / {
+        return 200 'kart gangnam style!';
+        add_header Content-Type text/plain;
+        #root   /usr/share/nginx/html;
+        #index  index.html;
+    }
+}
 
 
-
-
-
+docker-compose up -d db
 
 
 
